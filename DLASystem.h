@@ -153,4 +153,5 @@ class DLASystem {
     void setWinBackgroundBlack() { glClearColor(0.0, 0.0, 0.0, 0.0); }
 
     void printParticles();
+    void printclusterRadius();
 };

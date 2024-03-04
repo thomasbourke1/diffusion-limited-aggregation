@@ -323,5 +323,10 @@ void DLASystem::DrawSquares() {
 void DLASystem::printParticles() {
 	
 	cout << "Number of particles = " << numParticles << endl;
+}
+
+//prints cluster radius
+void DLASystem::printclusterRadius() {
 	
+	cout << "Cluster radius = " << clusterRadius << endl;
 }

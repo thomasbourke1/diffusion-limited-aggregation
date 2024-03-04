@@ -125,6 +125,7 @@ void drawFuncs::handleKeypress(unsigned char key, int x, int y) {
     break;
   case '0':
     sys->printParticles();
+    sys->printclusterRadius();
     break;
 	}
   // tell openGL to redraw the window
