@@ -69,6 +69,7 @@ void drawFuncs::introMessage() {
         cout << "  r to clear everything (reset)" << endl;
         cout << "  z to pause and zoom in" << endl;
         cout << "  w or b to change background colour to white or black" << endl;
+        cout << "  0 to print no. particles and size of cluster" << endl;
 }
 
 // openGL function deals with the keyboard
@@ -122,6 +123,9 @@ void drawFuncs::handleKeypress(unsigned char key, int x, int y) {
     cout << "upd" << endl;
     sys->Update();
     break;
+  case '0':
+    sys->printParticles();
+    break;
 	}
   // tell openGL to redraw the window
 	glutPostRedisplay();
@@ -132,7 +136,7 @@ void drawFuncs::update(int val) {
   int wait;  // time to wait between updates (milliseconds)
   
   if ( sys->running ) {
-    if ( sys->slowNotFast == 1)
+    if ( sys->slowNotFast == 2)
       wait = 10;
     else
       wait = 0;

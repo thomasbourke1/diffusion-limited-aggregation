@@ -317,3 +317,11 @@ void DLASystem::DrawSquares() {
 	}
 
 }
+
+
+// this function prints the number of particles to the console
+void DLASystem::printParticles() {
+	
+	cout << "Number of particles = " << numParticles << endl;
+	
+}
