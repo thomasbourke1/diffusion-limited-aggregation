@@ -209,7 +209,12 @@ void DLASystem::moveLastParticle() {
 			setParticleInactive();  // make the particle inactive (stuck)
 			updateClusterRadius(lastP->pos);  // update the cluster radius, addCircle, etc.
 
-			if (numParticles % 100 == 0 && logfile.is_open()) {
+			if (numParticles % 10 == 0){
+				printParticles();
+				printclusterRadius();
+			}
+
+			if (numParticles % 10 == 0 && logfile.is_open()) {
 				logfile << numParticles << " " << clusterRadius << endl;
 			}
 		}
@@ -245,7 +250,7 @@ DLASystem::DLASystem(Window *set_win) {
 	cout << "creating system, gridSize " << gridSize << endl;
 	win = set_win;
 	numParticles = 0;
-	endNum = 1000;
+	endNum = 10000;
 
 	// allocate memory for the grid, remember to free the memory in destructor
 	grid = new int*[gridSize];
@@ -260,7 +265,7 @@ DLASystem::DLASystem(Window *set_win) {
 	killRatio = 1.7;   // how much bigger is the killCircle, compared to the addCircle
 
 	// this opens a logfile, if we want to...
-	//logfile.open("opfile.txt");
+	logfile.open("opfile.txt");
 }
 
 // destructor
