@@ -151,4 +151,12 @@ class DLASystem {
     // but we are being a bit lazy here
     void setWinBackgroundWhite() { glClearColor(1.0, 1.0, 1.0, 1.0); }
     void setWinBackgroundBlack() { glClearColor(0.0, 0.0, 0.0, 0.0); }
+
+    int keepGoing = 0;
+
+    void endSim(int keepGoing){
+      keepGoing = 1;
+    }
+
+    int numberOfFractals;
 };

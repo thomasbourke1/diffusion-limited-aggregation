@@ -26,6 +26,14 @@ void DLASystem::Update() {
 	}
 	if (lastParticleIsActive == 0 || slowNotFast == 1)
 		glutPostRedisplay(); //Tell GLUT that the display has changed
+
+	else if (numParticles == endNum && keepGoing == 1){
+		numberOfFractals += 1;
+		cout << "Fractals generated: " << numberOfFractals << endl;
+		Reset();
+		setRunning();
+
+	}
 }
 
 
