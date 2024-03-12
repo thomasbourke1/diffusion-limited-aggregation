@@ -209,14 +209,14 @@ void DLASystem::moveLastParticle() {
 			setParticleInactive();  // make the particle inactive (stuck)
 			updateClusterRadius(lastP->pos);  // update the cluster radius, addCircle, etc.
 
-			if (numParticles % 10 == 0){
-				printParticles();
-				printclusterRadius();
-			}
+//			if (numParticles % 10 == 0){
+//				printParticles();
+	//			printclusterRadius();
+//			}
 
-			if (numParticles % 10 == 0 && logfile.is_open()) {
-				logfile << numParticles << " " << clusterRadius << endl;
-			}
+//			if (numParticles % 10 == 0 && logfile.is_open()) {
+//				logfile << numParticles << " " << clusterRadius << endl;
+//			}
 		}
 	}
 	else {
@@ -325,13 +325,13 @@ void DLASystem::DrawSquares() {
 
 
 // this function prints the number of particles to the console
-void DLASystem::printParticles() {
+//void DLASystem::printParticles() {
 	
-	cout << "Number of particles = " << numParticles << endl;
-}
+//	cout << "Number of particles = " << numParticles << endl;
+//}
 
 //prints cluster radius
-void DLASystem::printclusterRadius() {
+//void DLASystem::printclusterRadius() {
 	
-	cout << "Cluster radius = " << clusterRadius << endl;
-}
+//	cout << "Cluster radius = " << clusterRadius << endl;
+//}

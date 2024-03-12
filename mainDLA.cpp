@@ -123,10 +123,6 @@ void drawFuncs::handleKeypress(unsigned char key, int x, int y) {
     cout << "upd" << endl;
     sys->Update();
     break;
-  case '0':
-    sys->printParticles();
-    sys->printclusterRadius();
-    break;
 	}
   // tell openGL to redraw the window
 	glutPostRedisplay();
