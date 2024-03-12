@@ -229,6 +229,16 @@ void DLASystem::moveLastParticle() {
 	}
 }
 
+//function to open logfile, write data to it, close
+int DLASystem::writeData() {
+
+	logfile.open("opfile.txt");
+    logfile << numParticles << " " << clusterRadius << endl;
+	logfile.close();
+}
+
+
+
 // check if the last particle should stick (to a neighbour)
 int DLASystem::checkStick() {
 	Particle *lastP = particleList[numParticles - 1];
@@ -250,7 +260,7 @@ DLASystem::DLASystem(Window *set_win) {
 	cout << "creating system, gridSize " << gridSize << endl;
 	win = set_win;
 	numParticles = 0;
-	endNum = 10000;
+	endNum = 100;
 
 	// allocate memory for the grid, remember to free the memory in destructor
 	grid = new int*[gridSize];

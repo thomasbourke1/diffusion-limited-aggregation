@@ -154,4 +154,20 @@ class DLASystem {
 
    // void printParticles();
     // void printclusterRadius();
+
+  // returns endNum of system
+  int returnEndNum() const {
+        return endNum;
+    }
+
+  void setEndNum(int end) {
+        endNum = end;
+    }
+
+  int returnnumParticles() const {
+    return numParticles;
+  }
+  
+  int writeData();
+
 };

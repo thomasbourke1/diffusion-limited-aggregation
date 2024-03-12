@@ -70,10 +70,66 @@ void drawFuncs::introMessage() {
         cout << "  z to pause and zoom in" << endl;
         cout << "  w or b to change background colour to white or black" << endl;
         cout << "  0 to print no. particles and size of cluster" << endl;
+        cout << "  a to enter automated run" << endl;
 }
+
+//function to automate runs of system without openGL graphics (very slow)
+void autoRun(DLASystem* sys, int N_runs) {
+  
+  // seed random rumber generator based on current time
+  srand(time(NULL));
+
+  int endNum = sys->returnEndNum();
+
+  //loops j over 
+  for (int j=0; j < endNum; j++){
+
+    //loops simuation multiple times [need another loop to do simulations]
+    for (int i=0; i < N_runs; i++){
+
+      int s = rand();
+      cout << "Iteration:" << i+1 << " Seed:" << s << endl;
+      
+      //sets seed
+      sys->setSeed(s);
+
+      //sets end num of system
+      sys->setEndNum(1000);
+
+      //starts simulation
+      sys->setRunning();
+      // glutTimerFunc(0, drawFuncs::update, 0);
+      
+      //auto sets system to fast
+      sys->setFast();
+
+      //print to file here?
+
+      int numParticles = sys->returnnumParticles();
+      if (numParticles % 10 == 0){
+        
+        cout << "hello" << endl;
+        sys->writeData();
+
+      }
+    }
+  }
+}
+
+    
+    //cout << "Size: "<< j << " Iteration: " << i+1 << " Seed:" << s << endl;
+
+  
+
+
 
 // openGL function deals with the keyboard
 void drawFuncs::handleKeypress(unsigned char key, int x, int y) {
+
+  //set no. runs
+
+  int N_runs = 2;
+
 	switch (key) {
   case 'h':
     drawFuncs::introMessage();
@@ -123,6 +179,12 @@ void drawFuncs::handleKeypress(unsigned char key, int x, int y) {
     cout << "upd" << endl;
     sys->Update();
     break;
+  case 'a':
+    cout << "automated mode" << endl;
+    autoRun(sys, N_runs);
+    sys->Reset();
+    exit(0);
+    break;
 	}
   // tell openGL to redraw the window
 	glutPostRedisplay();
@@ -161,7 +223,7 @@ void drawFuncs::display() {
         0.0, 0.0, -1.0,        /* point to look at */
         0.0, 1.0, 0.0);		   /* up direction */
 
-      //sys->DrawSpheres();
+     // sys->DrawSpheres();
       sys->DrawSquares();
 
       //  Swap contents of backward and forward frame buffers
