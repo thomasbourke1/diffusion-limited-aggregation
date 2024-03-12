@@ -73,61 +73,87 @@ void drawFuncs::introMessage() {
         cout << "  a to enter automated run" << endl;
 }
 
-//function to automate runs of system without openGL graphics (very slow)
+//function to automate runs of system without openGL graphics
 void autoRun(DLASystem* sys, int N_runs) {
   
   // seed random rumber generator based on current time
   srand(time(NULL));
 
+  int seed = rand();
+  sys->setSeed(seed);
+  cout << "Seed:" << seed << endl;
+
   int endNum = sys->returnEndNum();
 
+  for (int i=0; i < endNum; i++){
+    cout << "run started" << endl;
+    sys->setEndNum(1000);
+    sys->setRunning();
+    glutTimerFunc(0, drawFuncs::update, 0);
+    sys->setFast();
+
+    while (sys->Update() == 0) {
+        // Do nothing, just wait for update
+    }
+    cout << "end system" << endl;
+    sys->Reset();
+  }
+  cout << "run complete" << endl;
+}
+
+
+  
+
   //loops j over 
-  for (int j=0; j < endNum; j++){
+
+
+
+  //for (int j=0; j < endNum; j++){
 
     //loops simuation multiple times [need another loop to do simulations]
-    for (int i=0; i < N_runs; i++){
+   // for (int i=0; i < N_runs; i++){
 
-      int s = rand();
-      cout << "Iteration:" << i+1 << " Seed:" << s << endl;
+     // int s = rand();
+     // cout << "Iteration:" << i+1 << " Seed:" << s << endl;
       
       //sets seed
-      sys->setSeed(s);
+     // sys->setSeed(s);
 
       //sets end num of system
-      sys->setEndNum(1000);
+      //sys->setEndNum(1000);
 
       //starts simulation
-      sys->setRunning();
-       glutTimerFunc(0, drawFuncs::update, 0);
+   //   sys->setRunning();
+    //   glutTimerFunc(0, drawFuncs::update, 0);
       
       //auto sets system to fast
-      sys->setFast();
+     // sys->setFast();
 
-      while (sys->Update() == 0) {
+  //    while (sys->Update() == 0) {
         // Do nothing, just wait for update
-      }
+   //   }
 
 
       //print to file here?
 
-      int numParticles = sys->returnnumParticles();
-      int radius = sys->returnClusterRadius();
+   //   int numParticles = sys->returnnumParticles();
+    //  int radius = sys->returnClusterRadius();
 
-      if (numParticles % 10 == 0){
+    //  if (numParticles % 10 == 0){
         
-        cout << "hello" << endl;
-        sys->writeData(numParticles, radius);
+    //    cout << "hello" << endl;
+   //     sys->writeData(numParticles, radius);
 
-      }
+   //   }
 
-      cout << "end system" << endl;
-      sys->Reset();
+    //  cout << "end system" << endl;
+    //  sys->Reset();
 
 
-    }
-  }
-  cout << "automated run complete" << endl;
-}
+  //  }
+ // }
+ // cout << "automated run complete" << endl;
+//}
 
     
     //cout << "Size: "<< j << " Iteration: " << i+1 << " Seed:" << s << endl;
