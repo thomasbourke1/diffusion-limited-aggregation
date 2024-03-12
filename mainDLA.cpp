@@ -98,22 +98,35 @@ void autoRun(DLASystem* sys, int N_runs) {
 
       //starts simulation
       sys->setRunning();
-      // glutTimerFunc(0, drawFuncs::update, 0);
+       glutTimerFunc(0, drawFuncs::update, 0);
       
       //auto sets system to fast
       sys->setFast();
 
+      while (sys->Update() == 0) {
+        // Do nothing, just wait for update
+      }
+
+
       //print to file here?
 
       int numParticles = sys->returnnumParticles();
+      int radius = sys->returnClusterRadius();
+
       if (numParticles % 10 == 0){
         
         cout << "hello" << endl;
-        sys->writeData();
+        sys->writeData(numParticles, radius);
 
       }
+
+      cout << "end system" << endl;
+      sys->Reset();
+
+
     }
   }
+  cout << "automated run complete" << endl;
 }
 
     

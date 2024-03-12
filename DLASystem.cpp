@@ -17,7 +17,10 @@ namespace colours {
 // this function gets called every step,
 //   if there is an active particle then it gets moved,
 //   if not then add a particle
-void DLASystem::Update() {
+int DLASystem::Update() {
+
+	bool end = 0;
+
 	if (lastParticleIsActive == 1)
 		moveLastParticle();
 	else if (numParticles < endNum) {
@@ -26,6 +29,8 @@ void DLASystem::Update() {
 	}
 	if (lastParticleIsActive == 0 || slowNotFast == 1)
 		glutPostRedisplay(); //Tell GLUT that the display has changed
+
+	return end;
 }
 
 
@@ -230,14 +235,31 @@ void DLASystem::moveLastParticle() {
 }
 
 //function to open logfile, write data to it, close
-int DLASystem::writeData() {
+//int DLASystem::writeData() {
 
-	logfile.open("opfile.txt");
-    logfile << numParticles << " " << clusterRadius << endl;
-	logfile.close();
+//	logfile.open("opfile.txt");
+  //  logfile << numParticles << " " << clusterRadius << endl;
+//	logfile.close();
+//}
+
+//new function to write data
+
+void DLASystem::writeData(int numParticles, int size) {
+
+	cout << "saving results" << endl;
+
+	//open file
+	std::ofstream outFile("results_counts.txt", std::ios_base::app);
+
+	if (outFile.is_open()) {
+		//write in the values
+		outFile << numParticles << "," << size << ':' << std::endl;
+
+		outFile.close();
+	}
+
+	cout << "results saved" << endl;
 }
-
-
 
 // check if the last particle should stick (to a neighbour)
 int DLASystem::checkStick() {

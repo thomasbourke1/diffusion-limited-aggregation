@@ -65,7 +65,7 @@ class DLASystem {
 
     // update the system: if there is an active particle then move it,
     // else create a new particle (on the adding circle)
-    void Update();
+    int Update();
 
     // draw particles as squares
     void DrawSquares();
@@ -168,6 +168,14 @@ class DLASystem {
     return numParticles;
   }
   
-  int writeData();
+  void writeData(int numCount, int size);
+
+  int returnNumParticles() const {
+    return numParticles;
+  }
+
+  int returnClusterRadius() const {
+    return clusterRadius;
+  }
 
 };
