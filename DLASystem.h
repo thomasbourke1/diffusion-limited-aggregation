@@ -154,9 +154,9 @@ class DLASystem {
 
     int keepGoing = 0;
 
-    void endSim(int keepGoing){
-      keepGoing = 1;
-    }
+  //  void endSim(int keepGoing){
+    //  keepGoing = 1;
+   // }
 
     int numberOfFractals;
 };

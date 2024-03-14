@@ -69,7 +69,8 @@ void drawFuncs::introMessage() {
         cout << "  r to clear everything (reset)" << endl;
         cout << "  z to pause and zoom in" << endl;
         cout << "  w or b to change background colour to white or black" << endl;
-        cout << "  k to make simulation switch off" << endl;
+        cout << "  k to start simulation automation" << endl;
+        cout << "  l to end automation and make simulation switch off" << endl;
 
 }
 
@@ -125,9 +126,13 @@ void drawFuncs::handleKeypress(unsigned char key, int x, int y) {
     sys->Update();
     break;
   case 'k':
-    cout << "simulation ending" << endl;
-    
-
+    cout << "automating simulation" << endl;
+    sys-> keepGoing = 1;
+    break;
+  case 'l':
+    cout << "ending simulation" << endl;
+    sys-> keepGoing = 0;
+    break;
 	}
   // tell openGL to redraw the window
 	glutPostRedisplay();
