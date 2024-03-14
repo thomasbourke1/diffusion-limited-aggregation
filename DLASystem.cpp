@@ -16,7 +16,7 @@ namespace colours {
 //function to print data to csv
 void DLASystem::printocsv(int count, int size) {
 
-	cout << "saving results" << endl;
+	//cout << "saving results" << endl;
 
 	//open csv
 	std::ofstream outFile("results_counts.csv", std::ios_base::app);
@@ -42,8 +42,8 @@ void DLASystem::Update() {
 		addParticleOnAddCircle();
 		setParticleActive();
 	}
-	if (lastParticleIsActive == 0 || slowNotFast == 1)
-		glutPostRedisplay(); //Tell GLUT that the display has changed
+//	if (lastParticleIsActive == 0 || slowNotFast == 1)
+	//	glutPostRedisplay(); //Tell GLUT that the display has changed
 
 	else if (numParticles == endNum && keepGoing == 1){
 		numberOfFractals += 1;
@@ -275,7 +275,7 @@ DLASystem::DLASystem(Window *set_win) {
 	cout << "creating system, gridSize " << gridSize << endl;
 	win = set_win;
 	numParticles = 0;
-	endNum = 100;
+	endNum = 1000;
 
 	// allocate memory for the grid, remember to free the memory in destructor
 	grid = new int*[gridSize];
