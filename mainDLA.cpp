@@ -58,6 +58,8 @@ int main(int argc, char **argv) {
   // start the openGL stuff
  	glutMainLoop();
 
+ // sys->setFast();
+ // sys->setRunning();
   return 0;
 }
 

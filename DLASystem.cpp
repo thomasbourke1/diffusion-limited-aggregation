@@ -260,7 +260,7 @@ DLASystem::DLASystem(Window *set_win) {
 	for (int i = 0; i < gridSize; i++) {
 		grid[i] = new int[gridSize];
 	}
-	slowNotFast = 1;
+	slowNotFast = 0;
 	// reset initial parameters
 	Reset();
 
@@ -268,7 +268,7 @@ DLASystem::DLASystem(Window *set_win) {
 	killRatio = 1.7;   // how much bigger is the killCircle, compared to the addCircle
 
 	// this opens a logfile, if we want to...
-	//logfile.open("opfile.txt");
+	logfile.open("opfile.txt");
 }
 
 // destructor
