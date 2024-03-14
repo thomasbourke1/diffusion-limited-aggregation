@@ -13,6 +13,24 @@ namespace colours {
 	GLfloat darkGrey[] = { 0.2, 0.2, 0.2, 1.0 };     // green
 }
 
+//function to print data to csv
+void DLASystem::printocsv(int count, int size) {
+
+	cout << "saving results" << endl;
+
+	//open csv
+	std::ofstream outFile("results_counts.csv", std::ios_base::app);
+
+	if (outFile.is_open()) {
+		//write to file
+		outFile << count << "," << size << ";" << std::endl;
+		outFile.close();
+	}
+	else {
+		//couldn't open file for writing
+		std::cerr << "Error: Unable to open the file for writing." << std::endl;
+	}
+}
 
 // this function gets called every step,
 //   if there is an active particle then it gets moved,
@@ -217,8 +235,12 @@ void DLASystem::moveLastParticle() {
 			setParticleInactive();  // make the particle inactive (stuck)
 			updateClusterRadius(lastP->pos);  // update the cluster radius, addCircle, etc.
 
-			if (numParticles % 100 == 0 && logfile.is_open()) {
-				logfile << numParticles << " " << clusterRadius << endl;
+			//if (numParticles % 100 == 0 && logfile.is_open()) {
+			//	logfile << numParticles << " " << clusterRadius << endl;
+			//}
+			if (numParticles % 10 ==0) {
+				//print data to csv if numParticles is divisible by 10
+				printocsv(numParticles, clusterRadius);
 			}
 		}
 	}

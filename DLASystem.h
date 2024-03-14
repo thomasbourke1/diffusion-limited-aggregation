@@ -155,4 +155,6 @@ class DLASystem {
     int keepGoing = 1;
 
     int numberOfFractals;
+
+    void printocsv(int count, int size);
 };
