@@ -23,7 +23,7 @@ void DLASystem::printocsv(int count, int size) {
 
 	if (outFile.is_open()) {
 		//write to file
-		outFile << count << "," << size << ";" << std::endl;
+		outFile << count << "," << size << std::endl;
 		outFile.close();
 	}
 	else {
