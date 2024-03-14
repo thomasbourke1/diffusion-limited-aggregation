@@ -50,8 +50,10 @@ void DLASystem::Update() {
 		cout << "Fractals generated: " << numberOfFractals << endl;
 		Reset();
 		setRunning();
-
 	}
+//	else {
+//		Reset();
+//	}
 }
 
 

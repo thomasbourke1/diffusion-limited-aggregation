@@ -23,6 +23,11 @@ DLASystem *sys;
 
 int main(int argc, char **argv) {
   // turn on glut
+
+  std::ofstream outFile("results_counts.csv", std::ios_base::app);
+  outFile << "numParticles" << "," << "clusterRadius" << ";" << std::endl;
+	outFile.close();
+  
 	glutInit(&argc, argv);
 
   int window_size[] = { 480,480 };
