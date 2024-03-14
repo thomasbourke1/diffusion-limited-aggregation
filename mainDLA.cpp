@@ -35,7 +35,11 @@ int main(int argc, char **argv) {
   sys = new DLASystem(win);
   
   // this is the seed for the random numbers
-  int seed = 6;
+  // int seed = 6;
+
+  //seeds the random number generator
+	srand(time(NULL));
+	int seed = rand();
   cout << "setting seed " << seed << endl;
   sys->setSeed(seed);
   
