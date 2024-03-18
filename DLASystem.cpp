@@ -50,6 +50,11 @@ void DLASystem::Update() {
 		cout << "Fractals generated: " << numberOfFractals << endl;
 		Reset();
 		setRunning();
+
+		// ends automation if numberOfFractals >> 99
+		if (numberOfFractals > 99){
+			keepGoing = 0;
+		}
 	}
 //	else {
 //		Reset();
