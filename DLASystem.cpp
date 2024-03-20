@@ -275,7 +275,7 @@ DLASystem::DLASystem(Window *set_win) {
 	cout << "creating system, gridSize " << gridSize << endl;
 	win = set_win;
 	numParticles = 0;
-	endNum = 3000;
+	endNum = 1000;
 
 	// allocate memory for the grid, remember to free the memory in destructor
 	grid = new int*[gridSize];
