@@ -153,7 +153,7 @@ class DLASystem {
     void setWinBackgroundBlack() { glClearColor(0.0, 0.0, 0.0, 0.0); }
 
     int keepGoing = 1;
-    int printHeader = 1;
+    void printHeader();
 
     int numberOfFractals;
 

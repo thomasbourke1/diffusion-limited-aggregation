@@ -26,11 +26,7 @@ int main(int argc, char **argv) {
 
   std::ofstream outFile("results_counts.csv", std::ios_base::app);
   
-  if (printHeader ==1){
-    outFile << "numParticles" << "," << "clusterRadius" << std::endl;
-	  outFile.close();
-    printHeader = 0;
-  }
+
 
 
 	glutInit(&argc, argv);
