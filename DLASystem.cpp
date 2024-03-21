@@ -37,8 +37,6 @@ void DLASystem::printocsv(int count, int size) {
 //   if not then add a particle
 void DLASystem::Update() {
 
-	endNumFractals = 10;
-
 	if (lastParticleIsActive == 1)
 		moveLastParticle();
 	else if (numParticles < endNum) {
@@ -316,7 +314,9 @@ DLASystem::DLASystem(Window *set_win) {
 	cout << "creating system, gridSize " << gridSize << endl;
 	win = set_win;
 	numParticles = 0;
-	endNum = 100;
+	endNum = 1000;
+	endNumFractals = 5;
+
 
 	// allocate memory for the grid, remember to free the memory in destructor
 	grid = new int*[gridSize];
