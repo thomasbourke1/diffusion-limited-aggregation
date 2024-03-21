@@ -28,7 +28,7 @@ class DLASystem {
     vector<Particle*> particleList;
     int numParticles;
 
-    int prob = 0.5;
+    int prob = 0.01;
     // delete particles and clear the particle list
     void clearParticles();
 
