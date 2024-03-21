@@ -242,7 +242,7 @@ void DLASystem::moveLastParticle() {
 			double stickProb = 0.5;
 			double trial = rgen.random01();
 			if (trial <= stickProb){
-				cout << "particle stuck" << endl;
+			//	cout << "particle stuck" << endl;
 				setParticleInactive();  // make the particle inactive (stuck)
 				updateClusterRadius(lastP->pos);  
 				if (numParticles % 10 ==0) {
@@ -250,7 +250,7 @@ void DLASystem::moveLastParticle() {
 				printocsv(numParticles, clusterRadius);
 			}
 			else{
-				cout << "particle didn't stick" << endl;
+			//	cout << "particle didn't stick" << endl;
 			}
 			}
 
@@ -269,8 +269,8 @@ void DLASystem::moveLastParticle() {
 	else {
 		// if we get to here then we are trying to move to an occupied site
 		// (this should never happen as long as the sticking probability is 1.0)
-		cout << "reject " << rr << endl;
-		cout << lastP->pos[0] << " " << lastP->pos[1] << endl;
+	//	cout << "reject " << rr << endl;
+	//	cout << lastP->pos[0] << " " << lastP->pos[1] << endl;
 		//cout << newpos[0] << " " << newpos[1] << " " << (int)newpos[0] << endl;
 		//printOccupied();
 	}
