@@ -153,11 +153,13 @@ class DLASystem {
     void setWinBackgroundWhite() { glClearColor(1.0, 1.0, 1.0, 1.0); }
     void setWinBackgroundBlack() { glClearColor(0.0, 0.0, 0.0, 0.0); }
 
-    int keepGoing = 1;
+    int keepGoing;
     void printHeader();
 
     int x;
     int checkStickProb();
+
+    int endNumFractals; //variable for end number of fractals we want to generate
 
     int numberOfFractals;
 

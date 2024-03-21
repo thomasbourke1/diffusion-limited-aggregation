@@ -36,6 +36,9 @@ void DLASystem::printocsv(int count, int size) {
 //   if there is an active particle then it gets moved,
 //   if not then add a particle
 void DLASystem::Update() {
+
+	endNumFractals = 10;
+
 	if (lastParticleIsActive == 1)
 		moveLastParticle();
 	else if (numParticles < endNum) {
@@ -51,8 +54,8 @@ void DLASystem::Update() {
 		Reset();
 		setRunning();
 
-		// ends automation if numberOfFractals >> 99
-		if (numberOfFractals > 99){
+		// ends automation if numberOfFractals >> 99 -> doesn't seem to work
+		if (numberOfFractals > endNumFractals - 1){
 			keepGoing = 0;
 		}
 	}
