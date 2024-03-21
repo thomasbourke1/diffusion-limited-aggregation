@@ -28,6 +28,7 @@ class DLASystem {
     vector<Particle*> particleList;
     int numParticles;
 
+    int prob = 1;
     // delete particles and clear the particle list
     void clearParticles();
 
@@ -154,6 +155,9 @@ class DLASystem {
 
     int keepGoing = 1;
     void printHeader();
+
+    int x;
+    int checkStickProb();
 
     int numberOfFractals;
 

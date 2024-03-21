@@ -239,16 +239,31 @@ void DLASystem::moveLastParticle() {
 		// check if we stick
 		if (checkStick()) {
 			//cout << "stick" << endl;
-			setParticleInactive();  // make the particle inactive (stuck)
-			updateClusterRadius(lastP->pos);  // update the cluster radius, addCircle, etc.
+			double stickProb = 0.5;
+			double trial = rgen.random01();
+			if (trial <= stickProb){
+				cout << "particle stuck" << endl;
+				setParticleInactive();  // make the particle inactive (stuck)
+				updateClusterRadius(lastP->pos);  
+				if (numParticles % 10 ==0) {
+				//print data to csv if numParticles is divisible by 10
+				printocsv(numParticles, clusterRadius);
+			}
+			else{
+				cout << "particle didn't stick" << endl;
+			}
+			}
+
+			//setParticleInactive();  // make the particle inactive (stuck)
+			//updateClusterRadius(lastP->pos);  // update the cluster radius, addCircle, etc.
 
 			//if (numParticles % 100 == 0 && logfile.is_open()) {
 			//	logfile << numParticles << " " << clusterRadius << endl;
 			//}
-			if (numParticles % 10 ==0) {
+			//if (numParticles % 10 ==0) {
 				//print data to csv if numParticles is divisible by 10
-				printocsv(numParticles, clusterRadius);
-			}
+			//	printocsv(numParticles, clusterRadius);
+			//}
 		}
 	}
 	else {
@@ -276,13 +291,29 @@ int DLASystem::checkStick() {
 	return result;
 }
 
+int DLASystem::checkStickProb() {
+	Particle *lastP = particleList[numParticles - 1];
+	int result = 0;
+	// loop over neighbours
+	for (int i = 0; i < 4; i++) {
+		double checkpos[2];
+		setPosNeighbour(checkpos, lastP->pos, i);
+		// if the neighbour is occupied...
+		if (readGrid(checkpos) == 1)
+			x = rand() % 1000 + 1;
+			if ((double)x / 1000 < prob) {
+				result = 1;
+			}
+	}
+	return result;
+}
 
 // constructor
 DLASystem::DLASystem(Window *set_win) {
 	cout << "creating system, gridSize " << gridSize << endl;
 	win = set_win;
 	numParticles = 0;
-	endNum = 2000;
+	endNum = 100;
 
 	// allocate memory for the grid, remember to free the memory in destructor
 	grid = new int*[gridSize];
