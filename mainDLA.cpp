@@ -45,8 +45,8 @@ int main(int argc, char **argv) {
 
   //seeds the random number generator
 	srand(time(NULL));
-	//int seed = rand();
-  int seed = 42;
+	int seed = rand();
+  //int seed = 42;
   cout << "setting seed " << seed << endl;
   sys->setSeed(seed);
   

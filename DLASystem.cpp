@@ -244,7 +244,7 @@ void DLASystem::moveLastParticle() {
 		// check if we stick
 		if (checkStick()) {
 			//cout << "stick" << endl;
-			double stickProb = 0.5;
+			double stickProb = 0.01;
 			double trial = rgen.random01();
 			if (trial <= stickProb){
 			//	cout << "particle stuck" << endl;
