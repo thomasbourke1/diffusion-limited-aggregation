@@ -39,7 +39,7 @@ class DLASystem {
     double killCircle;
   
     // size of grid
-    static const int gridSize = 1600;
+    static const int gridSize = 800;
     int **grid;  // this will be a 2d array that stores whether each site is occupied
   
     // the window draws only part of the grid, viewSize controls how much...

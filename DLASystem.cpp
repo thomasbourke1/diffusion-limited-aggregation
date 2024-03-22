@@ -57,6 +57,10 @@ void DLASystem::Update() {
 			keepGoing = 0;
 		}
 	}
+
+	if (numParticles == endNum && keepGoing == 0){
+		cout << "Simulation ended" << endl;
+	}
 //	else {
 //		Reset();
 //	}
