@@ -37,8 +37,6 @@ void DLASystem::printocsv(int count, int size) {
 //   if not then add a particle
 void DLASystem::Update() {
 
-	endNumFractals = 10;
-
 	if (lastParticleIsActive == 1)
 		moveLastParticle();
 	else if (numParticles < endNum) {
@@ -58,6 +56,10 @@ void DLASystem::Update() {
 		if (numberOfFractals > endNumFractals - 1){
 			keepGoing = 0;
 		}
+	}
+
+	if (numParticles == endNum && keepGoing == 0){
+		cout << "Simulation ended" << endl;
 	}
 //	else {
 //		Reset();
@@ -242,7 +244,7 @@ void DLASystem::moveLastParticle() {
 		// check if we stick
 		if (checkStick()) {
 			//cout << "stick" << endl;
-			double stickProb = 0.5;
+			double stickProb = 0.01;
 			double trial = rgen.random01();
 			if (trial <= stickProb){
 			//	cout << "particle stuck" << endl;
@@ -272,8 +274,8 @@ void DLASystem::moveLastParticle() {
 	else {
 		// if we get to here then we are trying to move to an occupied site
 		// (this should never happen as long as the sticking probability is 1.0)
-	//	cout << "reject " << rr << endl;
-	//	cout << lastP->pos[0] << " " << lastP->pos[1] << endl;
+		//cout << "reject " << rr << endl;
+		//cout << lastP->pos[0] << " " << lastP->pos[1] << endl;
 		//cout << newpos[0] << " " << newpos[1] << " " << (int)newpos[0] << endl;
 		//printOccupied();
 	}
@@ -316,7 +318,9 @@ DLASystem::DLASystem(Window *set_win) {
 	cout << "creating system, gridSize " << gridSize << endl;
 	win = set_win;
 	numParticles = 0;
-	endNum = 100;
+	endNum = 1000;
+	endNumFractals = 5;
+
 
 	// allocate memory for the grid, remember to free the memory in destructor
 	grid = new int*[gridSize];
