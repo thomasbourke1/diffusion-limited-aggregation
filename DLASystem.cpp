@@ -102,6 +102,20 @@ void DLASystem::Reset() {
 	double pos[] = { 0.0, 0.0 };
 	addParticle(pos);
 
+	// add more particles to starting position
+	for (int i = 0; i < moreParticles; i++)
+	{
+		double pos[] = { i, -i };
+		addParticle(pos);
+	}
+	
+	for (int j = -1*moreParticles; j < 0; j++)
+	{
+		double pos[] = { j, -j };
+		addParticle(pos);
+	}
+
+
 	// set the view
 	int InitialViewSize = 40;
 	setViewSize(InitialViewSize);
@@ -153,7 +167,7 @@ void DLASystem::addParticleOnAddCircle() {
 	double pos[2];
 
 	//edit  theta to change spawn angle
-	double theta = rgen.random01() * 0.087 * M_PI;
+	double theta = rgen.random01() * 0.5 * M_PI;
 	pos[0] = ceil(addCircle * cos(theta));
 	pos[1] = ceil(addCircle * sin(theta));
 	if (readGrid(pos) == 0)
@@ -322,8 +336,12 @@ DLASystem::DLASystem(Window *set_win) {
 	cout << "creating system, gridSize " << gridSize << endl;
 	win = set_win;
 	numParticles = 0;
-	endNum = 1000;
+	endNum = 3000;
 	endNumFractals = 5;
+	moreParticles = 50;
+
+	// angle is multiple of pi (set to 1 for 180 degrees, 2 for 360 degrees etc)
+	//angle = 1;
 
 
 	// allocate memory for the grid, remember to free the memory in destructor

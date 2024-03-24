@@ -162,6 +162,8 @@ class DLASystem {
     int endNumFractals; //variable for end number of fractals we want to generate
 
     int numberOfFractals;
+    int moreParticles;
+    int angle;
 
     void printocsv(int count, int size);
 };
