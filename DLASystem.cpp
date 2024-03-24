@@ -43,6 +43,8 @@ void DLASystem::Update() {
 		addParticleOnAddCircle();
 		setParticleActive();
 	}
+
+	//comment out to turn off visualisation
 	if (lastParticleIsActive == 0 || slowNotFast == 1)
 		glutPostRedisplay(); //Tell GLUT that the display has changed
 
