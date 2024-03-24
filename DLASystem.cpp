@@ -43,8 +43,8 @@ void DLASystem::Update() {
 		addParticleOnAddCircle();
 		setParticleActive();
 	}
-//	if (lastParticleIsActive == 0 || slowNotFast == 1)
-	//	glutPostRedisplay(); //Tell GLUT that the display has changed
+	if (lastParticleIsActive == 0 || slowNotFast == 1)
+		glutPostRedisplay(); //Tell GLUT that the display has changed
 
 	else if (numParticles == endNum && keepGoing == 1){
 		numberOfFractals += 1;
@@ -244,7 +244,7 @@ void DLASystem::moveLastParticle() {
 		// check if we stick
 		if (checkStick()) {
 			//cout << "stick" << endl;
-			double stickProb = 0.01;
+			double stickProb = 1;
 			double trial = rgen.random01();
 			if (trial <= stickProb){
 			//	cout << "particle stuck" << endl;
