@@ -151,7 +151,9 @@ void DLASystem::addParticle(double pos[]) {
 // (this should never happen)
 void DLASystem::addParticleOnAddCircle() {
 	double pos[2];
-	double theta = rgen.random01() * 2 * M_PI;
+
+	//edit  theta to change spawn angle
+	double theta = rgen.random01() * 0.087 * M_PI;
 	pos[0] = ceil(addCircle * cos(theta));
 	pos[1] = ceil(addCircle * sin(theta));
 	if (readGrid(pos) == 0)
